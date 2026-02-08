@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ModuleGroupController;
+use App\Http\Controllers\Admin\UserGroupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,19 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('users',[UserController::class, 'index'])->name('admin.users.index');
     Route::get('/users-data', [UserController::class, 'getUsers'])->name('users.data.index');
+
+    Route::get('user-groups',[UserGroupController::class, 'index'])->name('admin.user-groups.index');
+    Route::get('/user-groups-data', [UserGroupController::class, 'getUserGroups'])->name('user-groups.data.index');
+
+    Route::get('/module-group',[ModuleGroupController::class, 'index'])->name('admin.module-group.index');
+    Route::get('/module-group-data', [ModuleGroupController::class, 'getModuleGroupData'])->name('module-group.data.index');
+    Route::get('/module-group-create',[ModuleGroupController::class, 'create'])->name('admin.module-group.create');
+    Route::post('/module-group-store',action: [ModuleGroupController::class, 'store'])->name('admin.module-group.store');
+    Route::get('/module-group-show',action: [ModuleGroupController::class, 'show'])->name('admin.module-group.show');
+    Route::get('/module-group-edit/{id}',action: [ModuleGroupController::class, 'edit'])->name('admin.module-group.edit');
+    Route::put('/module-group-update/{id}',action: [ModuleGroupController::class, 'update'])->name('admin.module-group.update');
+    Route::delete('/module-group-destroy/{id}',action: [ModuleGroupController::class, 'destroy'])->name(name: 'admin.module-group.destroy');
+                        
 });
 
 require __DIR__.'/auth.php';

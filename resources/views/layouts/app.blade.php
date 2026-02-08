@@ -261,13 +261,16 @@
                 mode: "specific_textareas",
                 editor_selector: "tinyMcTextArea"
             });
-//tinymce.init({ selector:'textarea' });
-
         </script>
 
         <!---exsisting code-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
     </head>
     <body class="theme-blue">
+        <form id="delete-form" method="POST" style="display:none;">
+            @csrf
+            @method('DELETE')
+        </form>
         <div class="min-h-screen">
             <div class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">

@@ -1,0 +1,45 @@
+.text-center
+{
+    text-align: center !important;
+}
+.header{
+    margin-bottom: 12px;
+}
+.add-button{
+    display: inline-block;
+    background-color: #EEEEEE;
+    margin-bottom: 12px;
+}
+.add-button a{
+    display: inline-block;
+    padding: 4px 14px;
+    font-size: 13px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+}
+label{
+    color: #444;
+    font-weight: normal;
+}
+.from-field{
+    margin-bottom: 20px;
+}
+.from-field input, .from-field select{
+    border-radius: 5px;
+}
+.panel-heading{
+    font-weight: 600;
+    font-size: 14px !important;
+}
+.panel-footer .btn-default{
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e2e2e2), color-stop(1, #fafafa));
+    font-size: 15px;
+    padding: 2px 12px 2px 12px;
+}
+.panel-footer .from-btn{
+    height: 30px;
+    padding: 2px 12px 2px 12px;
+}
+.text-danger{
+    font-size: 13px;
+}

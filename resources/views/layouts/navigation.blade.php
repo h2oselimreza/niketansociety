@@ -159,22 +159,22 @@
         <li>
             <ul class="M-GRP-00001 nav nav-list collapse" style="height:auto;">
                 <li>
-                    <a href="{{ url('/admin/users/module-group') }}">
+                    <a href="{{ url('/admin/module-group') }}">
                         <span class="fa fa-caret-right"></span> Module Group
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/users/module') }}">
+                    <a href="{{ url('/admin/module') }}">
                         <span class="fa fa-caret-right"></span> Module
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/users/user-group-list') }}">
+                    <a href="{{ url('/admin/user-groups') }}">
                         <span class="fa fa-caret-right"></span> User Group
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/users/user-list') }}">
+                    <a href="{{ url('/admin/users') }}">
                         <span class="fa fa-caret-right"></span> Users
                     </a>
                 </li>

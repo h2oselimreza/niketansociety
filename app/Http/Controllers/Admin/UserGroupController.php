@@ -3,42 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserGroup;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 
-class UserController extends Controller
+class UserGroupController extends Controller
 {
     public function index(){
         //$users = User::select(['id','username','full_name','email','contact_no','user_group','is_active'])->get();
-        return view('admin.users.userList');
+        return view('admin.user_groups.index');
     }
 
-    public function getUsers(Request $request)
+    public function getUserGroups(Request $request)
     {
         if ($request->ajax()) {
 
-            $users = User::with('userGroup')->select([
+            $userGroups = UserGroup::select([
                 'id',
-                'username',
-                'full_name',
-                'contact_no',
-                'email',
-                'user_group',
+                'group_name',
                 'is_active'
             ]);
 
-            return DataTables::of($users)
+            return DataTables::of($userGroups)
 
                 ->addIndexColumn()
 
-                 ->addColumn('user_group', function ($user) {
-                    return $user->userGroup->group_name ?? '-';
-                })
-                ->addColumn('status', function ($user) {
-                    return $user->is_active
-                        ? '<span class="badge bg-success">Active</span>'
-                        : '<span class="badge bg-danger">Inactive</span>';
+                ->addColumn('is_active', function ($userGroups) {
+                    return $userGroups->is_active
+                        ? 'Active'
+                        : 'Inactive';
                 })
 
                 ->addColumn('action', function ($user) {
