@@ -36,20 +36,17 @@ class ModuleGroupController extends Controller
                     return '
                         <a href="'.$viewUrl.'" 
                         class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
-                            <span class="ui-button-icon-primary ui-icon ui-icon-document"></span>
                             <span class="ui-button-text">&nbsp;View</span>
                         </a>
 
                         <a href="'.$editUrl.'" 
                         class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
-                            <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span>
                             <span class="ui-button-text">&nbsp;Edit</span>
                         </a>
 
                         <a onclick="deleteRecord(\''.$deleteUrl.'\')" 
                         href="javascript:void(0)" 
                         class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
-                            <span class="ui-button-icon-primary ui-icon ui-icon-circle-minus"></span>
                             <span class="ui-button-text">&nbsp;Delete</span>
                         </a>
                     ';
@@ -57,11 +54,6 @@ class ModuleGroupController extends Controller
 
                 ->rawColumns(['status', 'action'])
                 ->make(true);
-
-                // <a href="'.route('admin.users.edit', $user->id).'"
-                //            class="btn btn-sm btn-primary">
-                //            Edit
-                //         </a>
 
         }
     }

@@ -1,27 +1,27 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="header">
+<div class="header dashboard_from">
     <h1 class="page-title">Modules</h1>
     <ul class="breadcrumb">
-        <li><a href="<?php /*echo base_url() */ ?>admin/Home"> Home</a></li>
-        <li><a href="#"> User</a></li>
-        <li><a href="#"> Modules</a></li>
+        <li><a href="#"> Home</a></li>
+        <li><a href="#">/ User</a></li>
+        <li><a href="#">/ Modules</a></li>
     </ul>
 </div>
 <div class="main-content">
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade in"> 
-            <button type="button" class="close" data-dismiss="alert">&times;</button> 
-            <strong>Success!</strong> {{ session('success') }} 
-        </div> 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger alert-dismissible fade in"> 
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Error!</strong> {{ session('error') }} 
-        </div> 
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
     <div class="add-button">
         <a href="{{ route('admin.modules.create') }}">Add Module Group</a>

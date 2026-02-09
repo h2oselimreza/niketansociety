@@ -42,20 +42,20 @@ class ModuleController extends Controller
                     $deleteUrl = route('admin.modules.destroy', $modules->id);
                 return '
                     <div class="dropdown">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                            Action
                         </button>
-                        <ul class="dropdown-menu pull-right">
+                        <ul class="dropdown-menu">
                             <li>
                                 <a href="'.$editUrl.'" 
-                                class="">
+                                class="d-block ps-3 mb-2">
                                     <span class="ui-button-text">&nbsp;Update</span>
                                 </a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a onclick="deleteRecord(\''.$deleteUrl.'\')" href="javascript:void(0)" 
-                                class="">
+                                class="ps-3">
                                     <span class="ui-button-text">&nbsp;Delete</span>
                                 </a>
                             </li>
@@ -66,6 +66,17 @@ class ModuleController extends Controller
 
                 ->rawColumns(['status', 'action'])
                 ->make(true);
+
+                // <div class="dropdown">
+                //     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                //         Dropdown button
+                //     </button>
+                //     <ul class="dropdown-menu">
+                //         <li><a class="dropdown-item" href="#">Link 1</a></li>
+                //         <li><a class="dropdown-item" href="#">Link 2</a></li>
+                //         <li><a class="dropdown-item" href="#">Link 3</a></li>
+                //     </ul>
+                // </div>
 
         }
     }
