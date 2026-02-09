@@ -1,11 +1,12 @@
 .bg-primary {
     background-color: #586783;
 }
-.form-control{
-    height: 26px;
-    font-size: 12px;
+.form-control,.form-select{
+    height: 30px;
+    font-size: 13px;
     padding: 2px 5px 2px 5px;
-    border-radius: 1px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 .btn{
     border-radius: 0px;

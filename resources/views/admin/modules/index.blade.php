@@ -64,7 +64,7 @@
     $(document).ready(function () {
 
     $('#datatable').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         ajax: "{{ route('modules.data.index') }}",
         columns: [

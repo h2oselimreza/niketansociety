@@ -2,22 +2,21 @@
 
 @section('content')
 
-<div class="header">
+<div class="header dashboard_from">
     <h1 class="page-title">
         {{ isset($module->exists) ? 'Edit Module' : 'Add Module' }}
     </h1>
 </div>
 
 <div class="main-content">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card from_card">
+        <div class="card-header">
             {{ isset($module->exists) ? 'Update Module' : 'Create Module' }}
         </div>
 
-        <div class="panel-body">
+        <div class="card-body">
 
-            <form class="form-horizontal"
-                action="{{ isset($module->exists) 
+            <form action="{{ isset($module->exists) 
                         ? route('admin.modules.update', $module->id) 
                         : route('admin.modules.store') }}"
                 method="POST">
@@ -29,114 +28,109 @@
                 @endif
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">
-                                Select Module Panel :
-                            </label>
-                            <div class="col-md-12">
-                                <select class="form-control" name="panel_type" id="panel_type" data-selected="{{ $module->panel_type ?? '' }}">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Module Panel :
+                        </label>
 
-                                    <option value="">Select Panel type</option>
+                        <select class="form-select"
+                            name="panel_type"
+                            id="panel_type"
+                            data-selected="{{ $module->panel_type ?? '' }}">
 
-                                    <option value="admin"
-                                        {{ old('panel_type', isset($module->panel_type)) == 'admin' ? 'selected' : '' }}>
-                                        Society Admin
-                                    </option>
+                            <option value="">Select Panel type</option>
 
-                                </select>
+                            <option value="admin"
+                                {{ old('panel_type', isset($module->panel_type)) == 'admin' ? 'selected' : '' }}>
+                                Society Admin
+                            </option>
 
-                                @error('panel_type')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                        </select>
+
+                        @error('panel_type')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">
-                                Module group :
-                            </label>
-                            <div class="col-md-12">
-                                <select class="form-control" name="module_group" id="module_group" data-selected="{{ $module->module_group ?? '' }}">
-                                    <option value="">Select module group</option>
-                                </select>
 
-                                @error('module_group')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Module group :
+                        </label>
+
+                        <select class="form-select"
+                            name="module_group"
+                            id="module_group"
+                            data-selected="{{ $module->module_group ?? '' }}">
+                            <option value="">Select module group</option>
+                        </select>
+
+                        @error('module_group')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">
-                                Module Name :
-                            </label>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Module Name :
+                        </label>
 
-                            <div class="col-md-12">
-                                <input type="text"
-                                    name="modules_name"
-                                    class="form-control"
-                                    value="{{ old('modules_name', $module->modules_name ?? '') }}">
+                        <input type="text"
+                            name="modules_name"
+                            class="form-control"
+                            placeholder="Modules name"
+                            value="{{ old('modules_name', $module->modules_name ?? '') }}">
 
-                                @error('modules_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                        @error('modules_name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">
-                                Module URL :
-                            </label>
 
-                            <div class="col-md-12">
-                                <input type="text"
-                                    name="module_url"
-                                    class="form-control"
-                                    value="{{ old('module_url', $module->module_url ?? '') }}">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Module URL :
+                        </label>
 
-                                @error('module_url')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                        <input type="text"
+                            name="module_url"
+                            class="form-control"
+                            placeholder="Modules url"
+                            value="{{ old('module_url', $module->module_url ?? '') }}">
+
+                        @error('module_url')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
+
                 <!-- Order -->
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">
-                                Module Order :
-                            </label>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Module Order :
+                        </label>
 
-                            <div class="col-md-12">
-                                <input type="text"
-                                    name="module_order"
-                                    class="form-control"
-                                    value="{{ old('module_order', $module->module_order ?? '') }}">
+                        <input type="text"
+                            name="module_order"
+                            class="form-control"
+                            placeholder="Modules order"
+                            value="{{ old('module_order', $module->module_order ?? '') }}">
 
-                                @error('module_order')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                        @error('module_order')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
-                <div class="panel-footer">
-                    <button class="btn btn-default btn-space from-btn">
+                <div class="ps-0 card-footer bg-white d-flex gap-2">
+                    <button class="btn btn-primary">
                         {{ isset($module->exists) ? 'Update' : 'Save' }}
                     </button> 
 
                     <a href="{{ route('admin.modules.index') }}"
-                    class="btn btn-default from-btn">
-                    Cancel
+                       class="btn btn-outline-secondary">
+                        Cancel
                     </a>
                 </div>
 

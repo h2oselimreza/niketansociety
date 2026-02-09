@@ -100,7 +100,7 @@
     </div>
 </nav>
 */?>
-
+<?php /*
 <div class="sidebar-nav" id="sideNavBar">
     <ul>
         <?php /*
@@ -151,6 +151,7 @@
             <?php
         }
         */ ?>
+        <?php /* modified code
         <li>
             <a href="#" data-target=".M-GRP-00001" class="nav-header collapsed" data-toggle="collapse">
                 <i class="fa fa-fw fa-dashboard"></i>  Users<i class="fa fa-collapse"></i>
@@ -180,7 +181,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li>?>
             <!-- <a href="#" data-target=".M-GRP-00001" class="nav-header collapsed" data-toggle="collapse">
                 <i class="fa fa-fw fa-dashboard"></i>  Users<i class="fa fa-collapse"></i>
             </a>
@@ -209,5 +210,54 @@
                 </li>
             </ul>
         </li> -->
+    </ul>
+</div>
+*/?>
+
+<div class="sidebar-nav" id="sideNavBar">
+    <ul class="list-unstyled">
+
+        <!-- Parent -->
+        <li>
+            <a
+                href="#"
+                class="nav-header d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#M-GRP-00001"
+                aria-expanded="false"
+            >
+                <span>
+                    <i class="fa-solid fa-users me-2"></i> Users
+                </span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </li>
+
+        <!-- Child -->
+        <li>
+            <ul id="M-GRP-00001" class="collapse list-unstyled ps-4">
+                <li>
+                    <a href="{{ url('/admin/module-group') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> Module Group
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/modules') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> Module
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/user-groups') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> User Group
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/users') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> Users
+                    </a>
+                </li>
+            </ul>
+        </li>
+
     </ul>
 </div>

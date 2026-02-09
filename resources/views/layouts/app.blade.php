@@ -11,46 +11,34 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <!-- <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ asset('assets/select_bo/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/select_bo/css/bootstrap-select.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/select_bo/css/custom-select.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.css') }}">
+        <!-- Bootstrap 5.3 -->
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
 
-        <script src="{{ asset('assets/select_bo/js/jquery-1.11.1.min.js') }}"></script>
-        <script src="{{ asset('assets/select_bo/js/jquery.knob.js') }}"></script>
-        <script src="{{ asset('assets/select_bo/js/myScript.js') }}"></script>
+        <!-- Font Awesome 6 -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+        <!-- DataTables Bootstrap 5 -->
+        <link href="https://cdn.datatables.net/v/dt/dt-2.3.7/datatables.min.css" rel="stylesheet" integrity="sha384-wCnlGUpaekN+Mtc+qIoipdqIqe2dvC7hWyzVg8wajZ1sxKnVTbnyBd7pyx7JT0Su" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/css/buttons.bootstrap5.min.css') }}">
 
+        <!-- jQuery UI (latest) -->
+        <link href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css" rel="stylesheet">
 
-        <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('assets/jquery-ui/css/jquery-ui.css') }}">
 
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="{{ asset('assets/sweetalert2/css/sweetalert2.min.css') }}">
 
-        <!-- Scripts -->
-         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Bootstrap Datepicker -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
-         <script src="{{ asset('assets/select_bo/js/bootstrap-select.js') }}" type="text/javascript"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script type="text/javascript" src="{{ asset('assets/select_bo/js/tinymce.js') }}"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <!-- Your custom styles -->
+        <link rel="stylesheet" href="{{ asset('assets/select_bo/css/theme.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/select_bo/css/myStyle.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <!-- Vite -->
+        @vite(['resources/css/app.css'])
 
-        <script src="{{ asset('assets/select_client/js/sweetalert.min.js') }}"></script>
-        <link href="{{ asset('assets/select_client/css/sweetalert.css') }}" rel="stylesheet" />
-
-        <script src="{{ asset('assets/select_bo/js/bootstrap-datepicker.js') }}"></script>
-        <link href="{{ asset('assets/select_bo/css/bootstrap-datepicker3.standalone.min.css') }}" rel="stylesheet" />
-
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/select_bo/css/theme.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/select_bo/css/myStyle.css') }}">
-
-        <script src="{{ asset('assets/select_bo/js/font-awesome.js') }}"></script>
 
         <script>
             function hideSideBar() {
@@ -63,200 +51,6 @@
                 }
             }
 
-            $(document).ready(function () {
-                $('.dataTable').DataTable({
-                    //"bPaginate": false,
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.footer()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                                );
-
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                            });
-                        });
-                    }
-                });
-            });
-            
-            $(document).ready(function () {
-                $('#dataTable').DataTable({
-                    //"bPaginate": false,
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.footer()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                                );
-
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                            });
-                        });
-                    }
-                });
-            });
-
-            $(document).ready(function () {
-                $('#dataTableWithoutPagging').DataTable({
-                    "bPaginate": false,
-                    "columnDefs": [{
-                            "targets": 'no-sort',
-                            "orderable": false,
-                            "order": []
-                        }],
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.footer()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                                );
-
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                            });
-                        });
-                    }
-                });
-            });
-
-            $(document).ready(function () {
-                $('#dataTableCheckBox').DataTable({
-                    "bPaginate": false,
-                    "columnDefs": [{
-                            "targets": 'no-sort',
-                            "orderable": false,
-                            "order": []
-                        }],
-                
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.footer()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                                );
-
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                            });
-                        });
-                    }
-                });
-            });
-            
-            $(document).ready(function () {
-    $('#dataTableCheckBoxWithDownload').DataTable({
-        "bPaginate": true,
-        "lengthMenu": [
-            [10, 25, 100, -1],
-            [10, 25, 100, "All"]
-        ],
-        "columnDefs": [{
-            "targets": 'no-sort',
-            "orderable": false,
-            "order": []
-        }],
-        dom: 'lBfrtip', // Added 'l' to show length menu
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        initComplete: function () {
-            this.api().columns().every(function () {
-                var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo($(column.footer()).empty())
-                    .on('change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                        column
-                            .search(val ? '^' + val + '$' : '', true, false)
-                            .draw();
-                    });
-
-                column.data().unique().sort().each(function (d, j) {
-                    select.append('<option value="' + d + '">' + d + '</option>')
-                });
-            });
-        }
-    });
-});
-
-/*
-
-            $(document).ready(function () {
-                $('#dataTableCheckBoxWithDownload').DataTable({
-                    "bPaginate": true,
-                   
-                     "lengthMenu": [
-                          [10, 25, 100, -1],
-                        [10, 25, 100, "All"]
-                    ],
-                    "columnDefs": [{
-                            "targets": 'no-sort',
-                            "orderable": false,
-                            "order": []
-                        }],
-                    dom: 'Bfrtip', // Enable Buttons
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print' // Buttons for export
-                    ],
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.footer()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                                );
-
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                            });
-                        });
-                    }
-                });
-            });
-*/
             tinyMCE.init({
                 mode: "specific_textareas",
                 editor_selector: "tinyMcTextArea"
@@ -272,46 +66,72 @@
             @method('DELETE')
         </form>
         <div class="min-h-screen">
-            <div class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <!-- Mobile toggle -->
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="mobileNav" style="display:none">
-                        </i><a class="navbar-brand" href="">COMPANY_NAME</a>
-                    </div>
-                </div>
-                <div class="navbar-collapse collapse" style="height: 1px;">
-                    <div id="sideNavigation" class="sideNavigation">
-                        <i class=" navbar-brand fa fa-bars" onclick="hideSideBar()" aria-hidden="true"></i><a class="navbar-brand" href="">COMPANY_NAME</a>
-                    </div>
-                    <ul id="main-menu" class="nav navbar-nav navbar-right">
-                        <li class="dropdown ">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php /*echo $this->session->userdata('fullName');*/ ?>
-                                <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a target="_blank" href="">Change Password</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <a style="padding-left:20px" tabindex="-1" href="route('logout')"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
-                                            {{ __('Logout') }}
+
+                    <!-- Brand -->
+                    <a class="navbar-brand d-lg-none" href="#">COMPANY_NAME</a>
+
+                    <!-- Navbar content -->
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+
+                        <!-- Sidebar toggle -->
+                        <div id="sideNavigation" class="d-flex align-items-center me-auto">
+                            <i class="fa-solid fa-bars fs-5 me-2" onclick="hideSideBar()" role="button"></i>
+                            <a class="navbar-brand mb-0" href="#">COMPANY_NAME</a>
+                        </div>
+
+                        <!-- Right menu -->
+                        <ul class="navbar-nav ms-auto">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+
+                                    <i class="fa-solid fa-user me-1"></i>
+                                    {{ auth()->user()->name ?? 'User' }}
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+
+                                    <li>
+                                        <a class="dropdown-item" target="_blank" href="#">
+                                            Change Password
                                         </a>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                    </li>
+
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="dropdown-item" type="submit">
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </nav>
+
             @include('layouts.navigation')
             <div class="content" id="contentDiv">
                 <div id="divTop">
@@ -321,16 +141,71 @@
                             <div class="spinner"></div> 
                         </div>
                     </div>
-                    <footer>
-                        <hr>
-                        <p class="pull-right">A <a href="" target="_blank">Developed</a> by <a href="" target="_blank"><b>ArrowLink™ Soft</b></a></p>
-                        <p>© 2016 <a href="" target="_blank"><b>ArrowLink™ Soft</b></a></p>
-                        <script src="{{ asset('assets/select_bo/js/bootstrap.js') }}"></script>
-                        {{-- PAGE-SPECIFIC SCRIPTS --}}
-                        @stack('scripts')
+                    <footer class="mt-5 py-3 border-top">
+                        <div class="container">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                                <!-- Left -->
+                                <p class="mb-2 mb-md-0">
+                                    © 2026 
+                                    <a href="#" target="_blank" class="text-decoration-none fw-semibold">
+                                        ArrowLink™ Soft
+                                    </a>
+                                </p>
+
+                                <!-- Right -->
+                                <p class="mb-0">
+                                    Developed by 
+                                    <a href="#" target="_blank" class="text-decoration-none fw-semibold">
+                                        ArrowLink™ Soft
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>
                     </footer>
                 </div>
             </div>
         </div>
+        <!-- jQuery 3.7 -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <!-- Bootstrap 5 Bundle -->
+            <script src="{{ asset('assets/css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+
+        <!-- DataTables -->
+        <!-- <script src="{{ asset('assets/dataTables/js/dataTables.min.js') }}"></script> -->
+        <!-- <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap5.min.js') }}"></script> -->
+         <script src="https://cdn.datatables.net/v/dt/dt-2.3.7/datatables.min.js" integrity="sha384-aQ8I1X2x8U0AR8D7C4Ah0OvZlwMslQdN5YDAQBA56jXrrhcECijs/i7H+5DDrlV1" crossorigin="anonymous"></script>
+
+        <!-- DataTables Buttons -->
+        <!-- <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.bootstrap5.min.js"></script> -->
+        <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
+
+        <!-- Export deps -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+        <!-- jQuery UI -->
+        <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.min.js"></script>
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- Bootstrap Datepicker -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- TinyMCE (latest) -->
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <!-- Your scripts -->
+        <script src="{{ asset('assets/select_bo/js/myScript.js') }}"></script>
+
+        <!-- Vite -->
+        @vite(['resources/js/app.js'])
+        {{-- PAGE-SPECIFIC SCRIPTS --}}
+        @stack('scripts')
     </body>
 </html>

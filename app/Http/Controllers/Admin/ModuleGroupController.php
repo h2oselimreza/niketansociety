@@ -87,8 +87,8 @@ class ModuleGroupController extends Controller
     public function show(ModuleGroup $moduleGroup){}
 
     public function edit($id){
-        $moduleGroup = ModuleGroup::findOrFail($id);
-        return view('admin.module_group.create', compact('moduleGroup'));
+        $module = ModuleGroup::findOrFail($id);
+        return view('admin.module_group.create', compact('module'));
             
     }
 
