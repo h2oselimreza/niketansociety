@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\ModuleGroupController;
 use App\Http\Controllers\Admin\UserGroupController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/module-group-edit/{id}',action: [ModuleGroupController::class, 'edit'])->name('admin.module-group.edit');
     Route::put('/module-group-update/{id}',action: [ModuleGroupController::class, 'update'])->name('admin.module-group.update');
     Route::delete('/module-group-destroy/{id}',action: [ModuleGroupController::class, 'destroy'])->name(name: 'admin.module-group.destroy');
+
+    Route::resource('modules', ModuleController::class)
+    ->names('admin.modules');
+    Route::get('/modules-data', [ModuleController::class, 'getModulesData'])->name('modules.data.index');
+    Route::get('/module-groups/{panel}', [ModuleController::class, 'selectModuleData'])->name('select.modules.data');
+
                         
 });
 

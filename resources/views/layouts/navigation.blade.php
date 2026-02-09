@@ -159,12 +159,12 @@
         <li>
             <ul class="M-GRP-00001 nav nav-list collapse" style="height:auto;">
                 <li>
-                    <a href="{{ url('/admin/module-group') }}">
+                    <a href="{{ url('/admin/modules') }}">
                         <span class="fa fa-caret-right"></span> Module Group
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/module') }}">
+                    <a href="{{ url('/admin/modules') }}">
                         <span class="fa fa-caret-right"></span> Module
                     </a>
                 </li>

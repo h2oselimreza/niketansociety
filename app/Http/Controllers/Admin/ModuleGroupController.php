@@ -35,20 +35,20 @@ class ModuleGroupController extends Controller
                     $deleteUrl = route('admin.module-group.destroy', $userGroups->id);
                     return '
                         <a href="'.$viewUrl.'" 
-                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
                             <span class="ui-button-icon-primary ui-icon ui-icon-document"></span>
                             <span class="ui-button-text">&nbsp;View</span>
                         </a>
 
                         <a href="'.$editUrl.'" 
-                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
                             <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span>
                             <span class="ui-button-text">&nbsp;Edit</span>
                         </a>
 
                         <a onclick="deleteRecord(\''.$deleteUrl.'\')" 
                         href="javascript:void(0)" 
-                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary action_button_modify">
                             <span class="ui-button-icon-primary ui-icon ui-icon-circle-minus"></span>
                             <span class="ui-button-text">&nbsp;Delete</span>
                         </a>
