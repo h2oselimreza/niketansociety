@@ -22,12 +22,12 @@ class Road extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->created_by = auth()->user()->name ?? 'system';
-            $model->updated_by = auth()->user()->name ?? 'system';
+            $model->created_by = auth()->user()->user_id ?? 'system';
+            $model->updated_by = auth()->user()->user_id ?? 'system';
         });
 
         static::updating(function ($model) {
-            $model->updated_by = auth()->user()->name ?? 'system';
+            $model->updated_by = auth()->user()->user_id ?? 'system';
         });
 
         static::created(function ($group) {

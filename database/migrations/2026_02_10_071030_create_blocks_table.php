@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roads', function (Blueprint $table) {
+        Schema::create('blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('road_code',50)->nullable()->unique();
-            $table->string('road_name', 50)->index();
-            $table->integer('road_order')->default(1);
+            $table->string('block_code',50)->nullable()->unique();
+            $table->string('block_name', 50)->index();
+            $table->integer('block_order')->default(1);
             $table->boolean('is_active')->default(1);
             $table->string('created_by', 70);
             $table->string('updated_by', 70);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roads');
+        Schema::dropIfExists('blocks');
     }
 };

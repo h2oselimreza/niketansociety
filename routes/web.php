@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlockController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\ModuleGroupController;
 use App\Http\Controllers\Admin\RoadController;
@@ -42,8 +43,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::resource('roads', RoadController::class)->names('road.module');
     Route::get('/road-data', [RoadController::class, 'getRoadData'])->name('road.data.index');
-    
 
+    Route::resource('blocks', BlockController::class)->names('admin.block.module');
+    Route::get('/block-data', [BlockController::class, 'getBlockData'])->name('admin.block.data.index');
+    
                         
 });
 
