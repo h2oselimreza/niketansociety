@@ -216,7 +216,6 @@
 
 <div class="sidebar-nav" id="sideNavBar">
     <ul class="list-unstyled">
-
         <!-- Parent -->
         <li>
             <a
@@ -254,6 +253,45 @@
                 <li>
                     <a href="{{ url('/admin/users') }}">
                         <i class="fa-solid fa-angle-right me-1"></i> Users
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="list-unstyled">
+        <!-- Parent -->
+        <li>
+            <a
+                href="#"
+                class="nav-header d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#M-GRP-00001"
+                aria-expanded="false"
+            >
+                <span>
+                    <i class="fa-solid fa-users me-2"></i> MetaData
+                </span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </li>
+
+        <!-- Child -->
+        <li>
+            <ul id="M-GRP-00001" class="collapse list-unstyled ps-4">
+                <li>
+                    <a href="{{ url('/admin/blocks') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> Block
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/roads') }}">
+                        <i class="fa-solid fa-angle-right me-1"></i> Road
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-angle-right me-1"></i>
+                        Road According Block
                     </a>
                 </li>
             </ul>
