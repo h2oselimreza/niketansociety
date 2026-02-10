@@ -78,7 +78,7 @@
                 var column = this;
 
                 // ❌ Skip Action column (last column index = 7)
-                if (column.index() === 7) return;
+                if (column.index() === 4) return;
 
                 var select = $('<select class="form-control" style="width:100%"><option value="">Select All</option></select>')
                     .appendTo($(column.footer()).empty())

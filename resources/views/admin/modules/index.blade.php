@@ -64,7 +64,7 @@
     $(document).ready(function () {
 
     $('#datatable').DataTable({
-        processing: false,
+        processing: true,
         serverSide: true,
         ajax: "{{ route('modules.data.index') }}",
         columns: [
@@ -83,9 +83,9 @@
                 var column = this;
 
                 // ❌ Skip Action column (last column index = 7)
-                if (column.index() === 7) return;
+                if (column.index() === 6) return;
 
-                var select = $('<select class="form-control" style="width:100%"><option value="">Select All</option></select>')
+                var select = $('<select class="form-control" style="width:100%"><option value="">All</option></select>')
                     .appendTo($(column.footer()).empty())
                     .on('change', function () {
                         var val = $.fn.dataTable.util.escapeRegex($(this).val());
