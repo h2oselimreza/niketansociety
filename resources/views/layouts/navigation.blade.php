@@ -289,7 +289,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ url('/admin/block-road') }}">
                         <i class="fa-solid fa-angle-right me-1"></i>
                         Road According Block
                     </a>
